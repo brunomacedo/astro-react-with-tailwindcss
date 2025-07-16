@@ -1,0 +1,8 @@
+{
+  "*.{md,mdx,css,json,html}": [
+    "npx prettier --write"
+  ],
+  "*.{astro,js,jsx,ts,tsx,cjs,mjs}": [
+    "npx prettier --write"
+  ]
+}
