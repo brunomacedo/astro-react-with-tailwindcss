@@ -6,6 +6,7 @@ import Counter from "../components/Counter";
 const someProps = {
   count: 0,
 };
+const { title } = Astro.props;
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
@@ -14,18 +15,77 @@ const someProps = {
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta name="description" content="Astro + TailwindCSS" />
+    <meta name="author" content="Alden Faelorn" />
+
+    <meta property="og:title" content="Astro + TailwindCSS" />
+    <meta property="og:description" content="Astro + TailwindCSS" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={`${title}/opengraph-image.png`} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@aldenfaelorn" />
+    <meta name="twitter:image" content="/opengraph-image.png" />
+
     <meta name="generator" content={Astro.generator} />
     <title>Astro + TailwindCSS</title>
+
+    <!-- Google Tag Manager -->
+    <script>
+      // @ts-nocheck
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-GTM_ID");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTAG_ID"
+    ></script>
+    <script>
+      // @ts-nocheck
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-GTAG_ID");
+    </script>
   </head>
 
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-GTM_ID"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      >
+      </iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <main class="grid h-screen place-items-center content-center">
       <Button>Tailwind Button in Astro!</Button>
-      <a href="/markdown-page" class="p-4 underline"
-        >Markdown is also supported...</a
-      >
+      <a href="/404" class="mt-3 px-4 py-1 underline">404 Page</a>
+      <a href="/markdown" class="px-4 py-1 underline">
+        Markdown is also supported...
+      </a>
       <Counter {...someProps} client:visible>
         <h1>Hello, React!</h1>
       </Counter>
