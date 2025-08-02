@@ -1,5 +1,6 @@
 import { useState, type JSX } from "react";
 import { cn } from "../lib/utils";
+import { GTMEvents, pushDataLayer } from "../lib/gtm/dataLayer";
 
 export default function Counter({
   children,
@@ -19,11 +20,31 @@ export default function Counter({
           `mt-6 grid grid-cols-3 place-items-center gap-4 text-2xl`,
         )}
       >
-        <button className="cursor-pointer" onClick={subtract}>
+        <button
+          className="cursor-pointer"
+          onClick={() => {
+            subtract();
+            pushDataLayer({
+              event: GTMEvents.AMAZON_CLICK,
+              category: "subtract",
+              label: "Minus",
+            });
+          }}
+        >
           -
         </button>
         <pre>{count}</pre>
-        <button className="cursor-pointer" onClick={add}>
+        <button
+          className="cursor-pointer"
+          onClick={() => {
+            add();
+            pushDataLayer({
+              event: GTMEvents.AMAZON_CLICK,
+              category: "add",
+              label: "Plus",
+            });
+          }}
+        >
           +
         </button>
       </div>

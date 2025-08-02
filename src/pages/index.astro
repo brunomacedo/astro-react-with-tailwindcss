@@ -38,8 +38,7 @@ const { title } = Astro.props;
     <title>Astro + TailwindCSS</title>
 
     <!-- Google Tag Manager -->
-    <script>
-      // @ts-nocheck
+    <script is:inline>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
@@ -54,10 +53,11 @@ const { title } = Astro.props;
     <!-- End Google Tag Manager -->
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTAG_ID"
-    ></script>
-    <script>
-      // @ts-nocheck
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-GTAG_ID"></script>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
